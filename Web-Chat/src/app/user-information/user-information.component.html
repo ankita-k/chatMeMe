@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>User Information</title>
+  </head>
+  <body>
+    <div>
+      <form (submit)="submitting()">
+        <div>
+          <label>Site Name :</label>
+            <input type="text" [(ngModel)]="site_name" name="site_name" placeholder="Site Name">
+        </div>
+        <br/>
+        <div>
+          <label>Customer Name :</label>
+            <input type="text" [(ngModel)]="customer_name" name="customer_name" placeholder="Customer Name">
+        </div>
+        <br/>
+        <div>
+          <label>Email :</label>
+            <input type="text" [(ngModel)]="email" name="email" placeholder="Email">
+        </div>
+        <br/>
+        <div>
+          <label>Phone Number :</label>
+            <input type="text" [(ngModel)]="phone_number" name="phone_number" placeholder="Phone Number">
+        </div>
+        <br/>
+        <input type="submit" class="btn btn btn btn-success" value="submit">
+      </form>
+    </div>
+  </body>
+</html>

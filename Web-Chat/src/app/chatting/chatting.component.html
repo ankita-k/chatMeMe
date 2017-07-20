@@ -1,0 +1,19 @@
+  <html>
+  <head>
+    <title>Chat</title>
+  </head>
+  <body>
+    <div class="chat">
+       <input type="text" class="chat-name" [(ngModel)]="name"  name="name" placeholder="Enter Your Name"/> 
+      <input type="text" [(ngModel)]="message"  name="message" placeholder="Type your chat"/>
+      <button (click)="sendMessage()">Click</button>
+    <div class="chat-messages" *ngFor="let message of messages">
+       {{message.name}}-{{message.message}}
+      </div>
+    </div>
+  </body>
+</html> 
+
+
+
+ 
