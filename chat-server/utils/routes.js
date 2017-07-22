@@ -38,6 +38,8 @@ class Routes {
 		});
 
 		this.app.post('/registerUser', (request, response) => {
+
+			var data;
 			switch (request.body.role) {
 				case 'Agent' :
 					data = {
@@ -104,7 +106,7 @@ class Routes {
 		
 
 		this.app.post('/login', (request, response) => {
-
+			console.log("login::::"+data.username);
 			const data = {
 				username: (request.body.username).toLowerCase(),
 				password: request.body.password

@@ -117,6 +117,7 @@ class Socket{
 			* sending the disconnected user to all socket users. 
 			*/
 			socket.on('disconnect',()=>{
+				console.log("disconnected :::::"+socket.id);
 				socket.broadcast.emit('chat-list-response',{
 					error : false ,
 					userDisconnected : true ,
@@ -131,6 +132,7 @@ class Socket{
 	socketConfig(){
 
 		this.io.use(function(socket, next) {
+			console.log(socket.request._query['userId']+" :::::"+socket.id);
 			let userID = socket.request._query['userId'];
           	let userSocketId = socket.id;
           	const data = {
