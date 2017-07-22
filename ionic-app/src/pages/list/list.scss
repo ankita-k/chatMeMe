@@ -1,0 +1,107 @@
+page-list 
+{
+
+
+.user-list
+{
+	padding: 10px;
+	overflow-y: scroll;
+	height: 423px;
+	width: 100%;
+    background-color: rgba(80, 208, 193, 0.51);
+}
+
+.user-list li
+{
+    background-color: rgba(255, 255, 255, 0.80);
+	padding: 20px;
+	list-style-type: none;
+	margin-bottom: 5px;
+    color: #444444;
+    width: 100% !important;
+    border-radius: 5px;
+    box-shadow: 0px 3px 3px rgba(172, 172, 172, 0.73);
+    line-height: 1.4;;
+    border-color: solid 0.5px rgba(0, 0, 0, 0.32);
+    clear: both;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+}
+
+page-listofchats {}
+
+.margin-bottom-4 {
+  margin-bottom: 4px !important;
+}
+
+.margin-right-0 {
+  margin-right: 0 !important;
+}
+
+.headerheight-90 {
+  height: 90px;
+}
+
+p.user-name {
+  margin: 0;
+  font-size: 15px;
+  font-family: roboto;
+  font-weight: 400;
+}
+
+header p small {
+  font-size: 11px;
+  line-height: 25px;
+}
+
+.headerheight-90 p span {
+  font-size: 12px;
+  margin: 0 2px;
+}
+
+.notifications svg {
+  margin: 0 3px;
+}
+
+.menu svg {
+  transform: rotateY(-180deg); // margin-top: 8px;
+  margin-left: 2px;
+}
+
+.notification-list {
+  padding: 0;
+  margin: 0;
+}
+
+.notification-list li {
+  list-style: none;
+  line-height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #a5a5bb;
+  padding: 0 10px;
+}
+
+.bg-gray {
+  background: #f4f6f7;
+}
+
+.notification-count {
+  color: #fff;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  line-height: 26px;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.notification-list .active {
+  background: #fff;
+  border-bottom: none;
+  box-shadow: 0 0px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin-top: -2px;
+}

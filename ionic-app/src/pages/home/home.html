@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
     <ion-title>
       Ionic Blank
@@ -10,14 +10,40 @@
 <ion-content padding>
 <ion-list>
  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input [(ngModel)]="username" type="text" value=""></ion-input>
+    <ion-label floating>email</ion-label>
+    <ion-input [(ngModel)]="email" type="text" value="email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Password</ion-label>
-    <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+    <ion-input [(ngModel)]="password"  type="password" value="password"></ion-input>
   </ion-item>
-<button primary block (click)="nextpage()">click to go next page</button>
+<button primary block (click)="submit()">click to go next page</button>
 </ion-list>
 
+</ion-content>-->
+<ion-content>
+  <header class="gradient-bg">
+    <div class="topbar"></div>
+    <p class="margin-0">Live Support <span>|</span> Online</p>
+    <div class="logo">
+      <img src="assets/images/logo.png" />
+    </div>
+    <div class="line-green"></div>
+  </header>
+
+  <section class="login_section" text-center>
+   
+    <form class="custom_form">
+       <p>Please login to your dashboard</p>
+       <div class="form-group">
+          <input type [(ngModel)]="username" name="username" class="form-control" placeholder="Username"/>
+       </div>
+       <div class="form-group">
+          <input type [(ngModel)]="password"  type="password" name="password" class="form-control" placeholder="Password"/>
+       </div>
+       <div class="form-group">
+          <button type="submit" class="gradient-bg custom_btn" (click)="submit(value)" ion-button round>Login</button>
+       </div>
+    </form>
+  </section>
 </ion-content>

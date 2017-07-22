@@ -25198,3 +25198,234 @@ ion-navbar.toolbar {
     padding-top: calc(16px + 20px);
   }
 }
+
+body {
+  font-family: roboto;
+}
+
+/* Universal Classes */
+.margin-0 {
+  margin: 0;
+}
+
+.gradient-bg {
+  background: #5f71dc;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#5f71dc), to(#7158c3));
+  background: linear-gradient(to right, #5f71dc, #7158c3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.toolbar-background-ios {
+  background: transparent;
+  border: none;
+}
+
+header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 150px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+
+header p {
+  color: #fff;
+  font-family: roboto;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+header p span {
+  color: #ab95ff;
+  font-size: 16px;
+  font-weight: 100;
+  margin: 0 6px;
+}
+
+.line-green {
+  height: 4px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #43c669;
+  background: -webkit-gradient(linear, left top, right top, from(#43c669), to(#d8e021));
+  background: linear-gradient(to right, #43c669, #d8e021);
+}
+
+.logo {
+  background: #fff;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 9;
+  -webkit-box-shadow: 0 3px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.3);
+  bottom: -30px;
+}
+
+.logo img {
+  width: 80%;
+}
+
+.topbar {
+  height: 16px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.login_section {
+  margin-top: 5em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  background: #f7f7f7;
+  padding: 5px 10px;
+  height: 36px;
+  border: none;
+  min-width: 260px;
+}
+
+.custom_btn {
+  padding: 0px 35px;
+  font-size: 14px;
+  -webkit-box-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+  margin-top: 2.5em;
+}
+
+.custom_form p {
+  color: #a7a7a7;
+  font-weight: 300;
+}
+
+page-list .user-list {
+  padding: 10px;
+  overflow-y: scroll;
+  height: 423px;
+  width: 100%;
+  background-color: rgba(80, 208, 193, 0.51);
+}
+
+page-list .user-list li {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  list-style-type: none;
+  margin-bottom: 5px;
+  color: #444444;
+  width: 100% !important;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 3px rgba(172, 172, 172, 0.73);
+  box-shadow: 0px 3px 3px rgba(172, 172, 172, 0.73);
+  line-height: 1.4;
+  border-color: solid 0.5px rgba(0, 0, 0, 0.32);
+  clear: both;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.margin-bottom-4 {
+  margin-bottom: 4px !important;
+}
+
+.margin-right-0 {
+  margin-right: 0 !important;
+}
+
+.headerheight-90 {
+  height: 90px;
+}
+
+p.user-name {
+  margin: 0;
+  font-size: 15px;
+  font-family: roboto;
+  font-weight: 400;
+}
+
+header p small {
+  font-size: 11px;
+  line-height: 25px;
+}
+
+.headerheight-90 p span {
+  font-size: 12px;
+  margin: 0 2px;
+}
+
+.notifications svg {
+  margin: 0 3px;
+}
+
+.menu svg {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  margin-left: 2px;
+}
+
+.notification-list {
+  padding: 0;
+  margin: 0;
+}
+
+.notification-list li {
+  list-style: none;
+  line-height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #a5a5bb;
+  padding: 0 10px;
+}
+
+.bg-gray {
+  background: #f4f6f7;
+}
+
+.notification-count {
+  color: #fff;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  line-height: 26px;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.notification-list .active {
+  background: #fff;
+  border-bottom: none;
+  -webkit-box-shadow: 0 0px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin-top: -2px;
+}

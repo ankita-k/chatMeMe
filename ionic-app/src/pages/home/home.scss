@@ -1,3 +1,102 @@
-page-home {
+page-home {}
 
+
+
+body {
+    font-family: roboto;
+}
+/* Universal Classes */
+
+.margin-0 {
+  margin: 0;
+}
+
+.gradient-bg {
+  background: #5f71dc;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5f71dc, #7158c3);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5f71dc, #7158c3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.toolbar-background-ios {
+  background: transparent;
+  border: none;
+}
+
+header {
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+header p {
+    color: #fff;
+    font-family: roboto;
+    font-size: 17px;
+    font-weight: 300;
+}
+header p span {
+    color: #ab95ff;
+    font-size: 16px;
+    font-weight: 100;
+    margin: 0 6px;
+}
+.line-green {
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #43c669;
+    background: -webkit-linear-gradient(to right, #43c669, #d8e021);
+    background: linear-gradient(to right, #43c669, #d8e021);
+}
+.logo {
+    background: #fff;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 9;
+    box-shadow: 0 3px 30px rgba(0,0,0,0.3);
+    bottom: -30px;
+}
+.logo img {
+    width: 80%;
+}
+.topbar {
+    height: 16px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,0.1);
+}
+.login_section {
+    margin-top: 5em;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-control {
+    background: #f7f7f7;
+    padding: 5px 10px;
+    height: 36px;
+    border: none;
+    min-width: 260px;
+}
+.custom_btn {
+    padding: 0px 35px;
+    font-size: 14px;
+    box-shadow: 0 3px 30px rgba(0,0,0,0.25);
+    margin-top: 2.5em;
+}
+.custom_form p {
+    color: #a7a7a7;
+    font-weight: 300; 
 }

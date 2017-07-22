@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import * as io from 'socket.io-client';
+import { SocketProvider } from '../../providers/socket/socket';
 
 /**
  * Generated class for the ChatPage page.
@@ -14,34 +15,92 @@ import * as io from 'socket.io-client';
   templateUrl: 'chat.html',
 })
 export class ChatPage {
+    id: string;
     chat_input: string;
    chats = [];
     socket: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+private selectedUserId = null;
+	private selectedSocketId = null;
+	private selectedUserName = null;	
 
-     this.socket = io('http://localhost:3000');
-    //this.socket = io('http://ec2-52-11-34-4.us-west-2.compute.amazonaws.com:8080');
+    private username = null;
+	private userId = null;
+	private socketId = null;
+	private chatListUsers = [];
+	private message = '';
+	private messages = [];
 
-      this.socket.on('message', (msg) =>
-        {
-      console.log("message", msg);
-      this.chats.push(msg);
-    });
+  constructor(public navCtrl: NavController, public navParams: NavParams,private socketProvider:SocketProvider) {
+
+     this.selectedSocketId = this.navParams.get('toSocketId');
+     this.selectedUserId = this.navParams.get('toUserId');
+     this.id = this.navParams.get('userId');
+console.log("chat ts || constructor end user  id:-" + this.selectedUserId + "end user socketid" +  this.selectedSocketId + " user id " + this.id);
+      this.socketProvider.connectSocket(this.id);
+      console.log("list || constructor trace id:-" + this.id);
+      this.socketProvider.receiveMessages().subscribe(response => {
+			    		if(this.selectedUserId && this.selectedUserId == response.fromUserId) {
+			    			this.messages.push(response);
+			    			setTimeout( () =>{
+			    					document.querySelector(`.message-thread`).scrollTop = document.querySelector(`.message-thread`).scrollHeight;
+			    			},100);
+			    		}
+			    	});;
+
+      
 
   }
-   send(msg) 
+isUserSelected(id:string):boolean{
+		if(!this.selectedUserId) {
+			return false;
+		}
+		return this.selectedUserId ===  id ? true : false;
+	}
+  alignMessage(id){
+		return this.id ===  id ? false : true;    
+  
+  }
+  
+  sendMessage(event) 
   {
-        if(msg != '')
-        {
-            this.socket.emit('message', msg);
-        }
-        
-        this.chat_input = '';
+ 
+			if(this.message === '' || this.message === null) {
+				alert(`Message can't be empty.`);
+			}else{
 
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad ChatPage');
-  }
+				if (this.message === '') {
+					alert(`Message can't be empty.`);
+				}else if(this.id === ''){
+					this.navCtrl.push('/');					
+				}else if(this.selectedUserId === ''){
+					alert(`Select a user to chat.`);
+				}else{
+          debugger;
+					const data = {
+						fromUserId : this.id,
+						message : (this.message).trim(),
+						toUserId : this.selectedUserId,
+						toSocketId : this.selectedSocketId,
+						fromSocketId : this.socketId
+					}
+					this.messages.push(data);
 
-}
+					setTimeout( () =>{
+	    					document.querySelector(`.message-thread`).scrollTop = document.querySelector(`.message-thread`).scrollHeight;
+	    			},100);
+					
+					/* 
+					* calling method to send the messages
+					*/
+					this.message = null;
+					this.socketProvider.sendMessage(data);
+				}
+			}
+		
+	} 
+} 
+
+
+
 

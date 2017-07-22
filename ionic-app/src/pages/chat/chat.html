@@ -16,7 +16,7 @@
 
 </ion-header>
 
-<ion-content padding>
+<!--<ion-content padding>
 
 <ion-list>
     <ion-item *ngFor="let message of chats">{{message}}</ion-item>
@@ -27,7 +27,32 @@
   </ion-item>
   <button ion-button block (click)="send(chat_input)">Send</button>
 
-  
+  -->
+<ion-content>
+  <div class="col-md-8">
+    <div class="massege-wrapper">
+      <div class="massege-container">
+
+        <div *ngIf="selectedUserName" class="opposite-user">
+          Chatting with {{selectedUserName}}
+        </div>
+
+        <ul class="message-thread">
+
+          <li *ngFor="let message of messages" [class.align-right]="alignMessage(message.toUserId)">
+            {{ message.message}}
+          </li>
+        </ul>
+
+      </div>
+      <div class="message-typer">
+
+        <div class="message form-control">
+          <ion-input type="text" [(ngModel)]="message" placeholder="Enter message"></ion-input>
+          <button ion-button block (click)="sendMessage($event)">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </ion-content>
- 
