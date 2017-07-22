@@ -6,7 +6,7 @@ class Db{
 	constructor(){
 		this.mongoClient = mongodb.MongoClient;
 		this.ObjectID = mongodb.ObjectID;
-		this.mongoURL = `mongodb://127.0.0.1:27017/chatMe`;
+		this.mongoURL = `mongodb://127.0.0.1:27017/chatMeMe`;
 	}
  
 	onConnect(callback){
