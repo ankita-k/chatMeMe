@@ -54,10 +54,10 @@ var SocketProvider = (function () {
     };
     SocketProvider.prototype.receiveMessages = function () {
         var _this = this;
-        //console.log("socket || receiveMessages trace id:-" + );
+        console.log("socket || receiveMessages trace id:-");
         var observable = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"](function (observer) {
             _this.socket.on('add-message-response', function (data) {
-                debugger;
+                console.log(data);
                 observer.next(data);
             });
             return function () {
@@ -399,8 +399,6 @@ var ChatPage = (function () {
                     fromUserId: this.id,
                     message: (this.message).trim(),
                     toUserId: this.selectedUserId,
-                    toSocketId: this.selectedSocketId,
-                    fromSocketId: this.socketId
                 };
                 this.messages.push(data);
                 setTimeout(function () {
