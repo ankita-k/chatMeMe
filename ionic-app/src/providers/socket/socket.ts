@@ -40,12 +40,13 @@ export class SocketProvider {
 
   receiveMessages(): any
    {
-    //console.log("socket || receiveMessages trace id:-" + );
+    console.log("socket || receiveMessages trace id:-" );
+    
     let observable = new Observable(observer =>
      {
       this.socket.on('add-message-response', (data) => 
       {
-        debugger;
+        console.log(data);
         observer.next(data);
       });
 

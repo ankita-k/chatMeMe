@@ -81,8 +81,8 @@ isUserSelected(id:string):boolean{
 						fromUserId : this.id,
 						message : (this.message).trim(),
 						toUserId : this.selectedUserId,
-						toSocketId : this.selectedSocketId,
-						fromSocketId : this.socketId
+						// toSocketId : this.selectedSocketId,
+						// fromSocketId : this.socketId
 					}
 					this.messages.push(data);
 
