@@ -38,6 +38,7 @@ class Routes {
 		});
 
 		this.app.post('/registerUser', (request, response) => {
+
 			var data;
 			switch (request.body.role) {
 				case 'Agent' :
@@ -64,7 +65,6 @@ class Routes {
 				registrationResponse.error = true;
 				registrationResponse.message = `username cant be empty.`;
 				response.status(412).json(registrationResponse);
-
 			} else if (data.email === '') {
 
 				registrationResponse.error = true;
@@ -102,7 +102,7 @@ class Routes {
 		});
 
 		this.app.post('/login', (request, response) => {
-			console.log("login::::"+data.username);
+			console.log("login::::"+request.body.username);
 			const data = {
 				username: (request.body.username).toLowerCase(),
 				password: request.body.password

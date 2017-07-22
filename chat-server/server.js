@@ -15,7 +15,7 @@ class Server{
  
     constructor(){
         this.port =  process.env.PORT || 8080;
-        this.host = `localhost`;
+        this.host = `ec2-52-11-34-4.us-west-2.compute.amazonaws.com`;
         this.app = express();
         this.http = http.Server(this.app);
         this.socket = socketio(this.http);
