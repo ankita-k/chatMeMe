@@ -1,32 +1,135 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>User Information</title>
-  </head>
-  <body>
-    <div>
-      <form (submit)="submitting()">
-        <div>
-          <label>Site Name :</label>
-            <input type="text" [(ngModel)]="site_name" name="site_name" placeholder="Site Name">
-        </div>
-        <br/>
-        <div>
-          <label>Customer Name :</label>
-            <input type="text" [(ngModel)]="customer_name" name="customer_name" placeholder="Customer Name">
-        </div>
-        <br/>
-        <div>
-          <label>Email :</label>
-            <input type="text" [(ngModel)]="email" name="email" placeholder="Email">
-        </div>
-        <br/>
-        <div>
-          <label>Phone Number :</label>
-            <input type="text" [(ngModel)]="phone_number" name="phone_number" placeholder="Phone Number">
-        </div>
-        <br/>
-        <input type="submit" class="btn btn btn btn-success" value="submit">
-      </form>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+  <!-- <script src="js/customreg.js"></script> -->
+</head>
+
+<body>
+  <section class="background_part">
+    <div class="pageBackground">
+      <!-- <img src="images/mit.png"> -->
     </div>
-  </body>
+    <!--chat section starts-->
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black pull-right"><img src="images/chat_icon.png">   Chat Us</button>
+    <div id="id01" class="w3-modal">
+      <div class="chat_shadow">
+        <div id="chat_wrapper">
+          <header class="chat_head">
+            <div class="chathead_background" id="chathead-background">
+
+              <!--chat head starts minimize and close button-->
+
+              <ul class="list-inline pull-left head_text paddingleft9">
+                <li>Live Support<span class="dividerwhite"></span></li>
+                        
+                        <li class="online_border">Online</li>
+                    </ul>
+                    <ul class="list-inline pull-right paddingright9">
+                        <li >
+                            <span onclick="document.getElementById('chathead-background').style='display:block'" 
+                                  class="w3-button w3-display-topright">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                                viewBox="0 0 491.858 491.858" style="enable-background:new 0 0 491.858 491.858;" xml:space="preserve"
+                                width="22px" height="12px">
+
+                                <g>
+                                    <path d="M465.167,211.613H240.21H26.69c-8.424,0-26.69,11.439-26.69,34.316s18.267,34.316,26.69,34.316h213.52h224.959    c8.421,0,26.689-11.439,26.689-34.316S473.59,211.613,465.167,211.613z"
+                                        fill="#FFFFFF" />
+                                </g>
+
+                            </svg>
+                                  </span>
+                </li>
+                <li class="closeheight">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 212.982 212.982" style="enable-background:new 0 0 212.982 212.982;" xml:space="preserve" 
+                            width="13px" height="10px">
+                              <g id="Close">
+	                               <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M131.804,106.491l75.936-75.936c6.99-6.99,6.99-18.323,0-25.312   c-6.99-6.99-18.322-6.99-25.312,0l-75.937,75.937L30.554,5.242c-6.99-6.99-18.322-6.99-25.312,0c-6.989,6.99-6.989,18.323,0,25.312   l75.937,75.936L5.242,182.427c-6.989,6.99-6.989,18.323,0,25.312c6.99,6.99,18.322,6.99,25.312,0l75.937-75.937l75.937,75.937   c6.989,6.99,18.322,6.99,25.312,0c6.99-6.99,6.99-18.322,0-25.312L131.804,106.491z" fill="#FFFFFF"/>
+                              </g>
+
+                            </svg>
+                            </span>
+                </li>
+              </ul>
+            </div>
+            <div class="header_separator online">
+            </div>
+
+            <!--<div class="header_separator offline">
+                </div>-->
+            <div class="logo_circle circle_shadow">
+              <img class="img-responsive image-circle" src="images/logo.png">
+            </div>
+          </header>
+          <section class="text-center text_section">
+            <div class="text">
+              <h5>Please type your inputs to continue</h5>
+            </div>
+            <div class="padding_bottom_9">
+              <input type="text" [(ngModel)]="customer_name" name="customer_name" placeholder="Your Name" class="form_height">
+              <input type="text" [(ngModel)]="email" name="email" placeholder="Email address" class="form_height">
+              <label>
+	               <select class="dropdown">
+                     <option *ngFor="let department of departments">{{department.name}}</option>    	
+		             <!-- <option value="">Web Design</option>
+		             <option value="">Android Application</option>
+		             <option value="">Jquery</option>
+		             <option value="">Javascript</option> -->
+	               </select>
+                </label>
+              <textarea name="query" placeholder="Query" rows="2" cols="10" class="form_height_query"></textarea>
+            </div>
+            <div>
+              <button class="btn_start_chat" (click)="submitting()">Start Chat</button>
+              <!--<button class="btn_send_message">Send Message</button>-->
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+</body>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+</script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+</script>
+
 </html>
