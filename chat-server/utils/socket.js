@@ -83,7 +83,8 @@ class Socket{
 						data.fromSocketId=Response.socketId
 						fromSocketId= data.fromSocketId;
 					});
-					
+					console.log(data);
+					delete data.toSocketId;
 					helper.insertMessages(data,( error , response)=>{
 						this.io.to(toSocketId).emit(`add-message-response`,data); 
 					});
