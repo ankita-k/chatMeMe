@@ -71,11 +71,19 @@ class Socket{
 
 				}else{
 					
-					let toSocketId = data.toSocketId;
-					let fromSocketId = data.fromSocketId;
+					let toSocketId;
+					let fromSocketId;
 					delete data.toSocketId;
 		        	data.timestamp = Math.floor(new Date() / 1000);
-
+					helper.getUserInfo( data.touserId,(err, Response)=>{
+						data.toSocketId=Response.socketId
+						toSocketId= data.toSocketId;
+					});
+					helper.getUserInfo( data.fromUserId,(err, Response)=>{
+						data.fromSocketId=Response.socketId
+						fromSocketId= data.fromSocketId;
+					});
+					
 					helper.insertMessages(data,( error , response)=>{
 						this.io.to(toSocketId).emit(`add-message-response`,data); 
 					});

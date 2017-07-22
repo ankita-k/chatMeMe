@@ -37,6 +37,25 @@ class Helper{
 			});
 		});
 	}
+
+
+    registerDomain(data,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('domain').insertOne(data, (err, result) =>{
+				db.close();
+				callback(err,result);
+			});
+		});
+	}
+ 
+ 	getDomainInfo(DomainId,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('domain').findOne( { _id : ObjectID(data.domainName)}, (err, result) => {
+				db.close();
+				callback(err,result);
+			});
+		});
+	}
  
 	
 	userSessionCheck(data,callback){
@@ -76,7 +95,8 @@ class Helper{
 			});
 		});
 	}
- 
+	
+
 	
 	insertMessages(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {

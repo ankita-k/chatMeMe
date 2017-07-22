@@ -38,7 +38,6 @@ class Routes {
 		});
 
 		this.app.post('/registerUser', (request, response) => {
-			const data
 			switch (request.body.role) {
 				case 'Agent' :
 					data = {
@@ -100,6 +99,9 @@ class Routes {
 				});
 			}
 		});
+
+
+		
 
 		this.app.post('/login', (request, response) => {
 
@@ -203,6 +205,43 @@ class Routes {
 				});
 			}
 		});
+
+
+		this.app.post('/registerDomain', (request, response) => {
+				const data={
+					domainName : (request.body.domainName)
+				}
+				
+				let regResponse = {}
+
+				if (data.domainName === '') {
+
+				regResponse.error = true;
+				regResponse.message = `DomainName cant be empty.`;
+				regresponse.status(412).json(regResponse);
+
+				
+
+			} else {
+
+				helper.registerDomain(data, (error, result) => {
+
+					if (error) {
+
+						regResponse.error = true;
+						regResponse.message = `Server error.`;
+						regresponse.status(404).json(regResponse);
+					} else {
+
+						regResponse.error = false;
+						regResponse.domainId = result.insertedId;
+						regResponse.message = `Domain registration successful.`;
+						response.status(200).json(regResponse);
+					}
+				});
+			}
+		});
+			
 
 
 		this.app.get('*', (request, response) => {
