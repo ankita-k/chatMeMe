@@ -14,7 +14,7 @@ import { DatePipe } from '@angular/common';
 export class ChattingComponent implements OnInit {
 
   //variable for agents
-  selectedAgentId: any;
+  agentInfo: any;
   selectedAgentSocketId: any;
 
   //variable for customer
@@ -51,6 +51,8 @@ export class ChattingComponent implements OnInit {
         }
         else {
           this.socketService.receiveMessages().subscribe(data => {
+            console.log(data);
+            this.agentInfo=data;
             this.agentMessages.push(data);
           });
 
@@ -78,12 +80,12 @@ export class ChattingComponent implements OnInit {
     else {
       const data = {
         //customer id and socket id
-        // fromUserId : this.userId,
+        fromUserId : this.id,
         // fromSocketId : this.socketId,
         // //agent id and socket id
-        // toAgentId : this.selectedAgentId,
+        toUserId : this.agentInfo.fromUserId,
         // toAgentSocketId : this.selectedAgentSocketId,
-        userMessage: (this.userMessage).trim()
+        message: (this.userMessage).trim()
       }
       this.userMessages.push(data);
       this.userMessage = null;

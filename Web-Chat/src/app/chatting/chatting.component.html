@@ -84,7 +84,7 @@
                            </div>
                            <div class="messages">
                               <div *ngFor="let agentMessage of agentMessages" class="msg_receive">
-                                 <p>{{agentMessage.agentMessage}}</p>
+                                 <p>{{agentMessage.message}}</p>
                               </div>
                            </div>
                         </div>
@@ -96,7 +96,7 @@
                                  <!-- <p>{{today | date:'jm'}}</p> -->
                               </div>
                               <div *ngFor="let userMessage of userMessages" class=" msg_sent">
-                                 <p>{{userMessage.userMessage}}
+                                 <p>{{userMessage.message}}
                                  </p>
                               </div>
                            </div>
