@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class HttpService {
     //provide the url
-    private url = 'http://localhost:9000';
+    private url = 'http://ec2-52-11-34-4.us-west-2.compute.amazonaws.com:8080/';
 
     //request headers
     private headerOptions = new RequestOptions({
@@ -18,23 +18,16 @@ export class HttpService {
 
     //add customer information to the server
     public addCustomerData(params){
-  		return this.http.post(`${this.url}`,JSON.stringify(params),this.headerOptions)
-  			.map( (response:Response) => response.json())
-  			.catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
-      }
-        
-      //retrive the customerId
-      public getCustomerId(){
-          return this.http.get(`${this.url}`)
+  		return this.http.post(`${this.url}registerUser`,JSON.stringify(params),this.headerOptions)
   			.map( (response:Response) => response.json())
   			.catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
       }
 
-    public registerUser(params){
-  		return this.http.post(`${this.url}`,JSON.stringify(params),this.headerOptions)
-  			.map( (response:Response) => response.json())
-  			.catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
-  	}
+     public userSessionCheck(params){
+        return this.http.post(`${this.url}userSessionCheck`,JSON.stringify(params),this.headerOptions)
+            .map( (response:Response) => response.json())
+            .catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
+    }
 
     public getMessages(params){
 		return this.http.post(`${this.url}`,JSON.stringify(params),this.headerOptions)

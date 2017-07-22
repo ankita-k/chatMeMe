@@ -7,7 +7,7 @@ import * as io from 'socket.io-client';
 export class SocketService {
 
   //specify the socket url
-  private url = 'http://localhost:9000';
+  private url = 'http://ec2-52-11-34-4.us-west-2.compute.amazonaws.com:8080/';
   private socket;
 
   //connect the endUser to the socket
@@ -15,17 +15,19 @@ export class SocketService {
   		this.socket = io(this.url,{ query: `userId=${userId}`});
   }
 
-  //emitting sendMessage event
-  sendMessage(name,message) {
-    this.socket.emit('input', {name,message});
+  // emitting sendMessage event
+  sendMessage(message) {
+    this.socket.emit('add-message', message);
     console.log("Message sent successfully");
   }
 
-  //emitting getMessage event
-  getMessages() {
+  //emitting message-response event
+  receiveMessages() {
     let observable = new Observable(observer => {
-      this.socket = io(this.url);
-      this.socket.on('inputnew', (data) => {
+      // this.socket = io(this.url);
+      console.log('received');
+      this.socket.on('add-message-response', (data) => {
+         console.log(data);
         observer.next(data);
       });
       return () => {
