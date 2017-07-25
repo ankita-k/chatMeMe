@@ -21,6 +21,33 @@ export class SocketService {
     console.log("Message sent successfully");
   }
 
+  //getting agent status
+  getAgentStatus(message)
+  {
+    var data={
+      siteId: '5974846c0b56337e3043f513',
+    }
+    this.socket.emit('agent-status',data);
+  }
+
+  //send agent status
+  receiveAgentStatus()
+  {
+     let observable = new Observable(observer => {
+      // this.socket = io(this.url);
+      console.log('received');
+      this.socket.on('agent-status-response', (data) => {
+        //  console.log(data);
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+
+      }
+    })
+    return observable;
+
+  }
   //emitting message-response event
   receiveMessages() {
     let observable = new Observable(observer => {

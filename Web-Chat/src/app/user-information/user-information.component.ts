@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class UserInformationComponent implements OnInit {
 
-  site_name:string=window.location.href;
   customer_name:string;
   email:string;
   phone_number:string;
@@ -25,7 +24,7 @@ export class UserInformationComponent implements OnInit {
 
   submitting(){
     const value={
-      domainName: this.site_name,
+      siteId: '5974846c0b56337e3043f513',
       username: this.customer_name,
       email: this.email,
       phone: this.phone_number,

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SocketService } from '../socket.service';
 import { HttpService } from './../http.service';
 import { ChatService } from './../chat.service';
-import { DatePipe } from '@angular/common';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'app-chatting',
@@ -13,6 +13,11 @@ import { DatePipe } from '@angular/common';
 })
 export class ChattingComponent implements OnInit {
 
+  //define agent status
+  agentStatusRecv = {
+    agentStatus: true
+  };
+
   //variable for agents
   agentInfo: any;
   selectedAgentSocketId: any;
@@ -20,12 +25,10 @@ export class ChattingComponent implements OnInit {
   //variable for customer
   private id = null;
   private socketId = null;
-  private userMessages = [];
-  private agentMessages = [];
-  private userMessage = "";
-  private agentMessage = "";
+  private messages = [];
+  private message = "";
 
-  today: number = Date.now();
+  timenow:any=moment().format('LTS');
 
   constructor(private chatService: ChatService,
     private socketService: SocketService,
@@ -44,52 +47,51 @@ export class ChattingComponent implements OnInit {
 
       //making socket connection by passing userId
       this.socketService.connectSocket(this.id);
-
+      this.socketService.getAgentStatus(this.id);
+      this.socketService.receiveAgentStatus().subscribe(data => {
+        console.log(data);
+        this.agentStatusRecv = JSON.parse(JSON.stringify(data));
+      });
       this.chatService.userSessionCheck(this.id, (error, response) => {
         if (error) {
-          this.router.navigate(['/']); /* Home page redirection */
+          this.router.navigate(['/']);
         }
         else {
           this.socketService.receiveMessages().subscribe(data => {
-            console.log(data);
-            this.agentInfo=data;
-            this.agentMessages.push(data);
+            // console.log(data);
+            this.agentInfo = data;
+            this.messages.push(data);
           });
 
         }
       });
     }
 
-    //for message start
-
-
-    //  this.connection = this.chatService.getMessages().subscribe(data => {
-    //   this.messages.push(data);
-    // })
-
-    // this.connection = this.chatService.getMessages().subscribe(message => {
-    //   this.messages.push(message);
-    // })
-
   }
 
-  sendMessage() {
-    if (this.userMessage === '' || this.userMessage === null) {
-      alert(`Message can't be empty.`);
-    }
-    else {
-      const data = {
-        //customer id and socket id
-        fromUserId : this.id,
-        // fromSocketId : this.socketId,
-        // //agent id and socket id
-        toUserId : this.agentInfo.fromUserId,
-        // toAgentSocketId : this.selectedAgentSocketId,
-        message: (this.userMessage).trim()
+  alignMessage(id) {
+    return this.id === id ? false : true;
+  }
+
+  sendMessage(event) {
+    if (event.keyCode === 13) {
+      if (this.message === '' || this.message === null) {
+        alert(`Message can't be empty.`);
       }
-      this.userMessages.push(data);
-      this.userMessage = null;
-      this.socketService.sendMessage(data);
+      else {
+        const data = {
+          //customer id and socket id
+          fromUserId: this.id,
+          // fromSocketId : this.socketId,
+          // //agent id and socket id
+          toUserId: this.agentInfo.fromUserId,
+          // toAgentSocketId : this.selectedAgentSocketId,
+          message: (this.message).trim()
+        }
+        this.messages.push(data);
+        this.message = null;
+        this.socketService.sendMessage(data);
+      }
     }
   }
 

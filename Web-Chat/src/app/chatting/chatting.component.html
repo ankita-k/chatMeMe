@@ -1,62 +1,43 @@
-  <!-- <html>
-  <head>
-    <title>Chat</title>
-  </head>
-  <body>
-    <div class="chat"> 
-      <input type="text" [(ngModel)]="message"  name="message" placeholder="Type your chat"/>
-      <button (click)="sendMessage()">Click</button>
-    <div class="chat-messages" *ngFor="let message of messages">
-       {{message.message}}
-      </div>
-    </div>
-  </body>
-</html> 
-
-
-
-  -->
-
-
 <!DOCTYPE html>
 <html>
-   <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="js/customchat.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-   </head>
-   <body>
-      <section class="background_part">
-         <div class="pageBackground">
-            <img src="images/mit.png">
-         </div>
-         <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black pull-right"><img src="images/chat_icon.png">   Chat Us</button>
-         <div id="id01" class="w3-modal">
-            <div class="chat_shadow">
-               <div id="chat_wrapper">
-                  <!-- chat header -->
-                  <header class="chat_head">
-                     <div class="chathead_background">
-                        <ul class="list-inline pull-left head_text paddingleft9">
-                           <li>Live Support<span class="dividerwhite"></span></li>
-                           <li class="online_border">Online</li>
-                        </ul>
-                        <ul class="list-inline pull-right paddingright9">
-                           <li>
-                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                                 viewBox="0 0 491.858 491.858" style="enable-background:new 0 0 491.858 491.858;" xml:space="preserve"
-                                 width="22px" height="12px">
-                                 <g>
-                                    <path d="M465.167,211.613H240.21H26.69c-8.424,0-26.69,11.439-26.69,34.316s18.267,34.316,26.69,34.316h213.52h224.959    c8.421,0,26.689-11.439,26.689-34.316S473.59,211.613,465.167,211.613z"
-                                       fill="#FFFFFF" />
-                                 </g>
-                              </svg>
-                           </li>
-                           <li class="closeheight">
-                              <span onclick="document.getElementById('id01').style.display='none'" 
-                                 class="w3-button w3-display-topright">
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="js/customchat.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+  <section class="background_part">
+    <div class="pageBackground">
+      <img src="images/mit.png">
+    </div>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black pull-right"><img src="images/chat_icon.png">   Chat Us</button>
+    <div id="id01" class="w3-modal">
+      <div class="chat_shadow">
+        <div id="chat_wrapper">
+          <!-- chat header -->
+          <header class="chat_head">
+            <div class="chathead_background">
+              <ul class="list-inline pull-left head_text paddingleft9">
+                <li>Live Support<span class="dividerwhite"></span></li>
+                <li class="online_border">Online</li>
+              </ul>
+              <ul class="list-inline pull-right paddingright9">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                    viewBox="0 0 491.858 491.858" style="enable-background:new 0 0 491.858 491.858;" xml:space="preserve" width="22px"
+                    height="12px">
+                    <g>
+                      <path d="M465.167,211.613H240.21H26.69c-8.424,0-26.69,11.439-26.69,34.316s18.267,34.316,26.69,34.316h213.52h224.959    c8.421,0,26.689-11.439,26.689-34.316S473.59,211.613,465.167,211.613z"
+                        fill="#FFFFFF" />
+                    </g>
+                  </svg>
+                </li>
+                <li class="closeheight">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">
                                  <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 212.982 212.982" style="enable-background:new 0 0 212.982 212.982;" xml:space="preserve" 
                                     width="13px" height="10px">
                                     <g id="Close">
@@ -64,153 +45,90 @@
                                     </g>
                                  </svg>
                               </span>
-                           </li>
-                        </ul>
-                     </div>
-                     <div class="header_separator">
-                     </div>
-                     <div class="logo_circle circle_shadow">
-                        <img class="img-responsive image-circle" src="images/man.jpg">
-                        <div class="caption">Nandan Mishra</div>
-                     </div>
-                  </header>
-                  <!-- end of chat header -->
-                  <!-- received and sent messages -->
-                  <section class="scroll">
-                     <div class="row msg_container base_receive">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="time">
-                              <!-- <p>{{today | date:'jm'}}</p> -->
-                           </div>
-                           <div class="messages">
-                              <div *ngFor="let agentMessage of agentMessages" class="msg_receive">
-                                 <p>{{agentMessage.message}}</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row msg_container base_sent">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="messages">
-                              <div class="time1">
-                                 <!-- <p>{{today | date:'jm'}}</p> -->
-                              </div>
-                              <div *ngFor="let userMessage of userMessages" class=" msg_sent">
-                                 <p>{{userMessage.message}}
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- <div class="row msg_container base_receive">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="time">
-                              <p>11:41</p>
-                           </div>
-                           <div class="messages ">
-                              <div class="msg_receive">
-                                 <p>please wait a moment</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row msg_container base_sent">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="time1">
-                              <p>11:42</p>
-                           </div>
-                           <div class="messages">
-                              <div class=" msg_sent">
-                                 <p>humm<br>ok</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row msg_container base_sent">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="time1">
-                              <p>11:43</p>
-                           </div>
-                           <div class="messages">
-                              <div class=" msg_sent">
-                                 <p>hi, Nandan. I am Satyajeet. I would like to know where is Sukanta?
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row msg_container base_receive">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="time">
-                              <p>11:43</p>
-                           </div>
-                           <div class="messages ">
-                              <div class="msg_receive">
-                                 <p>please wait a moment</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row msg_container base_sent">
-                        <div class="col-xs-10 col-md-10">
-                           <div class="time1">
-                              <p>11:43</p>
-                           </div>
-                           <div class="messages">
-                              <div class=" msg_sent">
-                                 <p>humm<br>ok</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div> -->
-                  </section>
-                  <!-- end of received and sent messages -->
-                  <!-- message showing typing... -->
-                  <!-- <section>
+                </li>
+              </ul>
+            </div>
+            <div class="header_separator">
+            </div>
+            <div class="logo_circle circle_shadow">
+              <img class="img-responsive image-circle" src="images/man.jpg">
+              <div class="caption">Nandan Mishra</div>
+            </div>
+          </header>
+          <!-- end of chat header -->
+
+
+
+          <!-- received and sent messages -->
+          <section class="scroll">
+            <!-- for agent status -->
+            <div class="status">
+              <h5 *ngIf="agentStatusRecv.agentStatus==false"> Agent not available. Please Try Again</h5>
+            </div>
+
+            <div *ngFor="let message of messages" class="row msg_container" [class.base_receive]="alignMessage(message.toUserId)==false"
+              [class.base_sent]="alignMessage(message.toUserId)">
+              <div class="col-xs-10 col-md-10">
+                <div [class.time]="alignMessage(message.toUserId)==false" [class.time1]="alignMessage(message.toUserId)">
+                  <p>{{timenow}}</p>
+                </div>
+                <div class="messages ">
+                  <div class="msg_receive" [class.msg_receive]="alignMessage(message.toUserId)==false" [class.msg_sent]="alignMessage(message.toUserId)">
+                    <p> {{ message.message}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+          <!-- end of received and sent messages -->
+          <!-- message showing typing... -->
+          <!-- <section>
                      <div class="type text-center">
                         <p><i>Nandan is typing...</i></p>
                      </div>
                   </section> -->
-                  <!-- end of showing message part -->
-                  <!-- footer -->
-                  <footer>
-                     <div class="ftr">
-                        <table>
-                           <tr>
-                              <td><i class="fa fa-smile-o" aria-hidden="true"></i> </td>
-                              <td><input type="text" [(ngModel)]="userMessage" name="userMessage"> </td>
-                              <td>
-                                 <svg (click)="sendMessage()" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    width="535.5px" height="535.5px" viewBox="0 0 535.5 535.5" style="enable-background:new 0 0 535.5 535.5;"
-                                    xml:space="preserve">
-                                    <g>
-                                       <g id="send" >
-                                          <polygon points="0,497.25 535.5,267.75 0,38.25 0,216.75 382.5,267.75 0,318.75 		" />
-                                       </g>
-                                    </g>
-                                 </svg>
-                              </td>
-                           </tr>
-                        </table>
-                     </div>
-                  </footer>
-                  <!-- end of footer -->
-               </div>
+          <!-- end of showing message part -->
+          <!-- footer -->
+          <footer>
+            <div class="ftr">
+              <table>
+                <tr>
+                  <td><i class="fa fa-smile-o" aria-hidden="true"></i> </td>
+                  <td><input type="text" [(ngModel)]="message" name="message" (keyup)="sendMessage($event)"> </td>
+                  <!-- <td>
+                    <svg (click)="sendMessage()" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px" y="0px" width="535.5px" height="535.5px" viewBox="0 0 535.5 535.5" style="enable-background:new 0 0 535.5 535.5;"
+                      xml:space="preserve">
+                      <g>
+                        <g id="send">
+                          <polygon points="0,497.25 535.5,267.75 0,38.25 0,216.75 382.5,267.75 0,318.75 		" />
+                        </g>
+                      </g>
+                    </svg>
+                  </td> -->
+                </tr>
+              </table>
             </div>
-         </div>
-      </section>
-      <!-- <button onclick="myFunction()">Try it</button> -->
-   </body>
-   <script>
-      // Get the modal
-      var modal = document.getElementById('id01');
-      
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function (event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-      
-   </script>
+          </footer>
+          <!-- end of footer -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <button onclick="myFunction()">Try it</button> -->
+</body>
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+</script>
+
 </html>
